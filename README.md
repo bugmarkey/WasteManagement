@@ -1,4 +1,4 @@
-# smart_bin_new
+WasteManagement App
 
 A new Flutter project.
 
