@@ -1,0 +1,73 @@
+name: smart_bin_flutter
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.6 <3.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  firebase_analytics: ^10.2.1
+  firebase_auth: ^4.4.1
+  firebase_core: ^2.9.0
+  firebase_database: ^10.1.0
+  firebase_messaging: ^14.6.2
+  flutter:
+    sdk: flutter
+  flutter_local_notifications: ^16.3.0
+  fluttertoast: ^8.2.1
+  http: ^1.1.2
+  overlay_support: ^2.1.0
+  percent_indicator: ^4.2.3
+  permission_handler: ^11.1.0
+  provider: ^6.0.5
+  shared_preferences: ^2.1.0
+  url_launcher: ^6.1.10
+  latlong2: ^0.9.0
+  geolocator: ^10.1.0
+  flutter_map_cache: ^1.3.1
+  flutter_map: ^6.1.0
+  dio_cache_interceptor_file_store: ^1.2.2
+  path_provider: ^2.1.1
+  location: ^5.0.3
+  flutter_map_animations: ^0.5.3
+  dio_cache_interceptor: ^3.5.0
+  another_flushbar: ^1.12.30
+
+dev_dependencies:
+  flutter_lints: ^3.0.1
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: "^0.13.1"
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/logo.png
+    - assets/logo2.png
+    - assets/bin1.png
+    - assets/bin2.png
+    - assets/sreclogo.png
+    - assets/waste_image.png
+
+  fonts:
+    - family: AquinoDemo
+      fonts:
+        - asset: assets/fonts/AquinoDemo.ttf
+
+    - family: Nisebuschgardens
+      fonts:
+        - asset: assets/fonts/Nisebuschgardens.ttf
+
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/NunitoBold.ttf
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
