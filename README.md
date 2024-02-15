@@ -12,14 +12,19 @@ A few resources to get you started if this is your first Flutter project:
 ## App Pages
 
 LOGIN SCREEN
-![LOGIN SCREEN](assets/documentation/login.png)
+<img src="assets/documentation/login.png" width="33%">
+
 SIGNUP SCREEN
-![alt text](<assets/documentation/SIGNUP SCREEN.png>)
+<img src="assets/documentation/SIGNUP SCREEN.png" width="33%">
+
 HOME SCREEN
-![alt text](assets/documentation/HOMESCREEN.png)
+<img src="assets/documentation/HOMESCREEN.png" width="33%">
+
 BIN SCREEN
-![alt text](<assets/documentation/BIN SCREEN.png>)
+<img src="assets/documentation/BIN SCREEN.png" width="33%">
+
 MAP SCREEN
-![alt text](<assets/documentation/MAP SCREEN.png>)
+<img src="assets/documentation/MAP SCREEN.png" width="33%">
+
 NOTIFICATION
-![alt text](assets/documentation/NOTIFICATION.png)
+<img src="assets/documentation/NOTIFICATION.png" width="33%">
