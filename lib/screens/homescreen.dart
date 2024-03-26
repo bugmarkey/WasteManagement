@@ -86,9 +86,9 @@ class _HomePageState extends State<HomePage> {
     val2 = double.parse(contact?['bin2']);
     val3 = double.parse(contact?['bin3']);
     height1 = int.parse(contact?['binheight']);
-    double percentage1 = (val1 / height1) * 10;
-    double percentage2 = (val2 / height1) * 10;
-    double percentage3 = (val3 / height1) * 10;
+    double percentage1 = ((val1 - 26) / (height1 - 26)) * 10;
+    double percentage2 = ((val2 - 26) / (height1 - 26)) * 10;
+    double percentage3 = ((val3 - 26) / (height1 - 26)) * 10;
     percent1 = 100 - ((percentage1.round()) * 10);
     print(percent1);
     percent2 = 100 - ((percentage2.round()) * 10);

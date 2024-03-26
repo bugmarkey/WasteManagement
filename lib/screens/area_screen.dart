@@ -130,59 +130,6 @@ class _AreaListState extends State<AreaList> {
     return false;
   }
 
-  /*Future<bool> adminuser() async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    User? user = auth.currentUser;
-    String? email = user?.email;
-    if (user == null) {
-      print('No user found');
-    }
-    DatabaseReference usersRef = FirebaseDatabase.instance.ref().child('users');
-    DatabaseEvent event = await usersRef.once();
-    DataSnapshot snapshot = event.snapshot;
-    Map<dynamic, dynamic> users = snapshot.value as Map<dynamic, dynamic>;
-    var key;
-    String? mail;
-    String? userrole;
-    for (key in users.keys) {
-      mail = users[key]['UserEmail'];
-      userrole = users[key]['Role'];
-      print('this key : $key');
-      if (mail == email) {
-        Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high,
-          forceAndroidLocationManager: true,
-        );
-        String lat = position.latitude.toString();
-        String long = position.longitude.toString();
-        usersRef.child(key).update({'latitude': lat, 'longitude': long});
-
-        print('hello');
-        print(key);
-
-        FirebaseAuth.instance.authStateChanges().listen((User? user) {
-          if (user == null) {
-            print('User is currently signed out!');
-            usersRef.child(key).update({'status': 'offline'});
-          } else {
-            print('User is signed in!');
-            usersRef.child(key).update({'status': 'online'});
-
-            // This will set the user's status to 'offline' when the app disconnects from Firebase
-            usersRef.child(key).onDisconnect().update({'status': 'offline'});
-          }
-        });
-      }
-
-      if (mail == email && userrole == "Admin") {
-        print(mail);
-        print(userrole);
-        return true;
-      }
-    }
-    return false;
-  }*/
-
   Future<void> requestNotificationPermission() async {
     final PermissionStatus status = await Permission.notification.request();
     if (status.isDenied) {
@@ -372,6 +319,7 @@ class _AreaListState extends State<AreaList> {
                       final Map<dynamic, dynamic> area =
                           valuesList.elementAt(index);
                       bool hasRedBin = false;
+                      final List<dynamic> fullBins = [];
 
                       area['bin_data']?.forEach((key, value) {
                         String binValueNew = value['bin1'];
@@ -386,11 +334,14 @@ class _AreaListState extends State<AreaList> {
                         double val2 = double.parse(binValueNew2);
                         double val3 = double.parse(binValueNew3);
                         height1 = int.parse(binheightnew);
-                        double percentage1 = (val1 / height1) * 10;
+                        double percentage1 =
+                            ((val1 - 26) / (height1 - 26)) * 10;
                         percent1 = 100 - ((percentage1.round()) * 10);
-                        double percentage2 = (val2 / height1) * 10;
+                        double percentage2 =
+                            ((val2 - 26) / (height1 - 26)) * 10;
                         percent2 = 100 - ((percentage2.round()) * 10);
-                        double percentage3 = (val3 / height1) * 10;
+                        double percentage3 =
+                            ((val3 - 26) / (height1 - 26)) * 10;
                         percent3 = 100 - ((percentage3.round()) * 10);
 
                         if (percent1 > 100) {
@@ -399,50 +350,23 @@ class _AreaListState extends State<AreaList> {
                           percent1 = 0;
                         }
 
-                        if (percent1 >= 90) {
+                        if (percent1 >= 90 ||
+                            percent2 >= 90 ||
+                            percent3 >= 90) {
                           hasRedBin = true;
-                          _showNotification(
-                            area['name'],
-                            value['binname'],
-                            true,
-                          );
-                        } else {
-                          _showNotification(
-                            area['name'],
-                            value['binname'],
-                            false,
-                          );
+                          fullBins.add({
+                            'name': area['name'],
+                            'binname': value['binname']
+                          });
                         }
+                      });
 
-                        if (percent2 >= 90) {
-                          hasRedBin = true;
-                          _showNotification(
-                            area['name'],
-                            value['binname'],
-                            true,
-                          );
-                        } else {
-                          _showNotification(
-                            area['name'],
-                            value['binname'],
-                            false,
-                          );
-                        }
-
-                        if (percent3 >= 90) {
-                          hasRedBin = true;
-                          _showNotification(
-                            area['name'],
-                            value['binname'],
-                            true,
-                          );
-                        } else {
-                          _showNotification(
-                            area['name'],
-                            value['binname'],
-                            false,
-                          );
-                        }
+                      fullBins.forEach((bin) {
+                        _showNotification(
+                          bin['name'],
+                          bin['binname'],
+                          true,
+                        );
                       });
 
                       return Container(

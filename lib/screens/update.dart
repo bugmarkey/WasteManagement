@@ -335,13 +335,5 @@ class _EditContactState extends State<EditContact> {
         val11 = percent3 / 100;
       });
     });
-
-    void saveContact() {
-      Map<String, String> contact = {};
-
-      _ref!.child(widget.binId).update(contact).then((value) {
-        Navigator.pop(context);
-      });
-    }
   }
 }
