@@ -19,10 +19,20 @@ class _EditContactState extends State<EditContact> {
   String z = '';
   String a = '';
   double val1 = 0;
+  double val2 = 0;
+  double val3 = 0;
   String str1 = '';
+  String str2 = '';
+  String str3 = '';
   double val9 = 0;
+  double val10 = 0;
+  double val11 = 0;
   int height1 = 0;
   int percent1 = 0;
+  int height2 = 0;
+  int percent2 = 0;
+  int height3 = 0;
+  int percent3 = 0;
 
   DatabaseReference? _ref;
 
@@ -180,15 +190,6 @@ class _EditContactState extends State<EditContact> {
                                 ),
                               ),
                             ),
-                            Positioned(
-                              top: 110,
-                              right: 20,
-                              child: Icon(
-                                Icons.settings,
-                                color: Colors.grey[700],
-                                size: 30,
-                              ),
-                            ),
                           ],
                         );
                       },
@@ -198,36 +199,84 @@ class _EditContactState extends State<EditContact> {
                     height: 30,
                   ),
                   Container(
-                    height: height,
+                    height: height * 0.5,
                     width: width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: Colors.white,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 40),
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 30,
-                            width: 20,
+                    child: Wrap(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(5, 20, 5, 0),
+                                    //GREEN BIN
+                                    child: CircularPercentIndicator(
+                                      radius: 80,
+                                      lineWidth: 10,
+                                      backgroundColor: Colors.grey,
+                                      percent: val9,
+                                      progressColor: Colors.green,
+                                      circularStrokeCap:
+                                          CircularStrokeCap.round,
+                                      animation: true,
+                                      center: Text(
+                                        "$str1 \n $percent1 %",
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(20, 20, 0, 0),
+                                    //RED BIN
+                                    child: CircularPercentIndicator(
+                                      radius: 80,
+                                      lineWidth: 10,
+                                      backgroundColor: Colors.grey,
+                                      percent: val10,
+                                      progressColor: Colors.red,
+                                      circularStrokeCap:
+                                          CircularStrokeCap.round,
+                                      animation: true,
+                                      center: Text(
+                                        "$str2 \n $percent2 %",
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 5),
+                                //BLUE BIN
+                                child: CircularPercentIndicator(
+                                  radius: 80,
+                                  lineWidth: 10,
+                                  backgroundColor: Colors.grey,
+                                  percent: val11,
+                                  progressColor: Colors.blue,
+                                  circularStrokeCap: CircularStrokeCap.round,
+                                  animation: true,
+                                  center: Text(
+                                    "$str3 \n $percent3 %",
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          CircularPercentIndicator(
-                            radius: 150,
-                            lineWidth: 10,
-                            backgroundColor: Colors.grey,
-                            percent: val9,
-                            progressColor: Colors.green,
-                            circularStrokeCap: CircularStrokeCap.round,
-                            animation: true,
-                            center: Text("$str1 \n $percent1 %"),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -239,38 +288,60 @@ class _EditContactState extends State<EditContact> {
     );
   }
 
-  getContactDetail() async {
-    DatabaseEvent event = await _ref!.child(widget.binId).once();
-    DataSnapshot snapshot = event.snapshot;
+  void getContactDetail() {
+    _ref!.child(widget.binId).onValue.listen((event) {
+      DataSnapshot snapshot = event.snapshot;
 
-    Map contact = snapshot.value as Map<dynamic, dynamic>;
+      Map contact = snapshot.value as Map<dynamic, dynamic>;
 
-    setState(() {
-      y = contact['binname'];
-      z = contact['model'];
-      a = contact['batterylevel'] + "%";
-      str1 = contact['var1'];
-      val1 = double.parse(contact['bin1']);
-      height1 = int.parse(contact['binheight']);
+      setState(() {
+        y = contact['binname'];
+        z = contact['model'];
+        a = contact['batterylevel'] + "%";
+        str1 = contact['var1'];
+        str2 = contact['var2'];
+        str3 = contact['var3'];
+        val1 = double.parse(contact['bin1']);
+        val2 = double.parse(contact['bin2']);
+        val3 = double.parse(contact['bin3']);
+        height1 = int.parse(contact['binheight']);
 
-      double percent = (val1 / height1) * 10;
-      percent1 = 100 - ((percent.round()) * 10);
-
-      if (percent1 > 100) {
-        percent1 = 100;
-      } else if (percent1 < 0) {
-        percent1 = 0;
-      }
-
-      val9 = percent1 / 100;
+        double percentage1 = ((val1 - 26.0) / (height1 - 26.0)) * 10;
+        double percentage2 = ((val2 - 26.0) / (height1 - 26.0)) * 10;
+        double percentage3 = ((val3 - 26.0) / (height1 - 26.0)) * 10;
+        percent1 = 100 - ((percentage1.round()) * 10);
+        percent2 = 100 - ((percentage2.round()) * 10);
+        percent3 = 100 - ((percentage3.round()) * 10);
+        //BIN 1
+        if (percent1 > 100) {
+          percent1 = 100;
+        } else if (percent1 < 0) {
+          percent1 = 0;
+        }
+        val9 = percent1 / 100;
+        //BIN 2
+        if (percent2 > 100) {
+          percent2 = 100;
+        } else if (percent2 < 0) {
+          percent2 = 0;
+        }
+        val10 = percent2 / 100;
+        //BIN 3
+        if (percent3 > 100) {
+          percent3 = 100;
+        } else if (percent3 < 0) {
+          percent3 = 0;
+        }
+        val11 = percent3 / 100;
+      });
     });
-  }
 
-  void saveContact() {
-    Map<String, String> contact = {};
+    void saveContact() {
+      Map<String, String> contact = {};
 
-    _ref!.child(widget.binId).update(contact).then((value) {
-      Navigator.pop(context);
-    });
+      _ref!.child(widget.binId).update(contact).then((value) {
+        Navigator.pop(context);
+      });
+    }
   }
 }

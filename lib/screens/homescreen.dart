@@ -17,6 +17,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   double val1 = 0;
+  double val2 = 0;
+  double val3 = 0;
   String str1 = '';
   double val5 = 0;
   double val9 = 0;
@@ -24,6 +26,9 @@ class _HomePageState extends State<HomePage> {
   double temp1 = 0;
   Future<bool>? usercheck;
   int percent1 = 0;
+  int percent2 = 0;
+  int percent3 = 0;
+  int percent = 0;
   String binId = "";
   int cpercent1 = 0;
   int wh1 = 0;
@@ -76,22 +81,30 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildContactItem({Map? contact, required String bin}) {
-    str1 = contact?['var1'];
+    //str1 = contact?['var1'];
     val1 = double.parse(contact?['bin1']);
+    val2 = double.parse(contact?['bin2']);
+    val3 = double.parse(contact?['bin3']);
     height1 = int.parse(contact?['binheight']);
-    double percent = (val1 / height1) * 10;
-    percent1 = 100 - ((percent.round()) * 10);
+    double percentage1 = (val1 / height1) * 10;
+    double percentage2 = (val2 / height1) * 10;
+    double percentage3 = (val3 / height1) * 10;
+    percent1 = 100 - ((percentage1.round()) * 10);
+    print(percent1);
+    percent2 = 100 - ((percentage2.round()) * 10);
+    percent3 = 100 - ((percentage3.round()) * 10);
 
-    if (percent1 > 100) {
-      percent1 = 100;
-    } else if (percent1 < 0) {
-      percent1 = 0;
+    if ((percent1 < 100) && (percent1 >= 90)) {
+      percent = 100;
+    } else if ((percent1 > 0 || percent2 > 0 || percent3 > 0) &&
+        (percent1 < 90 || percent2 < 90 || percent3 < 90)) {
+      percent = 0;
     }
 
-    val9 = percent1 / 100;
+    //val9 = percent1 / 100;
 
-    checkColor(var b) {
-      if (b >= 90) {
+    checkColor(var b, var c, var d) {
+      if (b >= 80 || c >= 80 || d >= 80) {
         reference
             .child(widget.areaId)
             .child("bin_data")
@@ -116,7 +129,7 @@ class _HomePageState extends State<HomePage> {
             borderRadius: BorderRadius.circular(15.0),
           ),
           margin: const EdgeInsets.fromLTRB(15.0, 6.0, 15.0, 0.0),
-          color: checkColor(percent1),
+          color: checkColor(percent1, percent2, percent3),
           child: ListTile(
             leading: Image.asset("assets/bin1.png"),
             onTap: () async {

@@ -375,13 +375,23 @@ class _AreaListState extends State<AreaList> {
 
                       area['bin_data']?.forEach((key, value) {
                         String binValueNew = value['bin1'];
+                        String binValueNew2 = value['bin2'];
+                        String binValueNew3 = value['bin3'];
                         String binheightnew = value['binheight'];
                         int height1 = 0;
                         int percent1 = 0;
+                        int percent2 = 0;
+                        int percent3 = 0;
                         double val1 = double.parse(binValueNew);
+                        double val2 = double.parse(binValueNew2);
+                        double val3 = double.parse(binValueNew3);
                         height1 = int.parse(binheightnew);
-                        double percent = (val1 / height1) * 10;
-                        percent1 = 100 - ((percent.round()) * 10);
+                        double percentage1 = (val1 / height1) * 10;
+                        percent1 = 100 - ((percentage1.round()) * 10);
+                        double percentage2 = (val2 / height1) * 10;
+                        percent2 = 100 - ((percentage2.round()) * 10);
+                        double percentage3 = (val3 / height1) * 10;
+                        percent3 = 100 - ((percentage3.round()) * 10);
 
                         if (percent1 > 100) {
                           percent1 = 100;
@@ -390,6 +400,36 @@ class _AreaListState extends State<AreaList> {
                         }
 
                         if (percent1 >= 90) {
+                          hasRedBin = true;
+                          _showNotification(
+                            area['name'],
+                            value['binname'],
+                            true,
+                          );
+                        } else {
+                          _showNotification(
+                            area['name'],
+                            value['binname'],
+                            false,
+                          );
+                        }
+
+                        if (percent2 >= 90) {
+                          hasRedBin = true;
+                          _showNotification(
+                            area['name'],
+                            value['binname'],
+                            true,
+                          );
+                        } else {
+                          _showNotification(
+                            area['name'],
+                            value['binname'],
+                            false,
+                          );
+                        }
+
+                        if (percent3 >= 90) {
                           hasRedBin = true;
                           _showNotification(
                             area['name'],

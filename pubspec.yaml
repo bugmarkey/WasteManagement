@@ -36,6 +36,7 @@ dependencies:
   flutter_map_animations: ^0.5.3
   dio_cache_interceptor: ^3.5.0
   another_flushbar: ^1.12.30
+  google_fonts:
 
 dev_dependencies:
   flutter_lints: ^3.0.1
