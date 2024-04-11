@@ -42,13 +42,12 @@ class _AddBinFormState extends State<AddBinForm> {
       );
       latii = position.latitude.toString();
       longii = position.longitude.toString();
-      print("Location: ${position.latitude}, ${position.longitude}");
+      debugPrint("Location: ${position.latitude}, ${position.longitude}");
       setState(() {
-        //_currentPosition = position;
         location = '(${position.latitude}, ${position.longitude})';
       });
     } catch (e) {
-      print("Error getting location: $e");
+      debugPrint("Error getting location: $e");
     }
   }
 
@@ -82,23 +81,6 @@ class _AddBinFormState extends State<AddBinForm> {
           key: _formKey,
           child: Column(
             children: [
-              /*TextFormField(
-                decoration: const InputDecoration(labelText: 'Latitude'),
-                initialValue: latii,
-                validator: (value) {
-                  if(value == null){
-                    value = latii;
-                  }
-                  //return null;
-                },
-                onSaved:(value) => _latitude=value,
-                ),
-              
-              Text('$longii',
-              textAlign: TextAlign.left,
-              
-              ),*/
-
               TextFormField(
                 decoration: const InputDecoration(labelText: 'Location'),
                 validator: (value) {

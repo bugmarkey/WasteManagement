@@ -1,8 +1,7 @@
-// ignore_for_file: avoid_print
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'dart:math' show cos, sqrt, asin;
+import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -56,8 +55,10 @@ class MyMap extends StatefulWidget {
 }
 
 class CountdownAlertDialog extends StatefulWidget {
+  const CountdownAlertDialog({super.key});
+
   @override
-  _CountdownAlertDialogState createState() => _CountdownAlertDialogState();
+  State<CountdownAlertDialog> createState() => _CountdownAlertDialogState();
 }
 
 class _CountdownAlertDialogState extends State<CountdownAlertDialog> {
@@ -70,7 +71,7 @@ class _CountdownAlertDialogState extends State<CountdownAlertDialog> {
   }
 
   void startCountdown() {
-    Timer.periodic(Duration(seconds: 1), (timer) {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
       if (countdown == 0) {
         timer.cancel();
         Navigator.of(context).pop();
@@ -85,14 +86,14 @@ class _CountdownAlertDialogState extends State<CountdownAlertDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Alert'),
+      title: const Text('Alert'),
       content: Text('Bin is full. Please empty the bin in $countdown.'),
       actions: [
         TextButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: Text('OK'),
+          child: const Text('OK'),
         ),
       ],
     );
@@ -170,15 +171,15 @@ class _MyHomePageState extends State<MyMap> with TickerProviderStateMixin {
       if (snapshot.value != null && snapshot.value is Map<dynamic, dynamic>) {
         Map<dynamic, dynamic> data = snapshot.value as Map<dynamic, dynamic>;
 
-        print('All BinIds:');
+        debugPrint('All BinIds:');
         data.forEach((key, value) {
-          print(key);
+          debugPrint(key);
         });
       } else {
-        print('Snapshot value is null or not a Map.');
+        debugPrint('Snapshot value is null or not a Map.');
       }
     } catch (e) {
-      print('Error fetching data: $e');
+      debugPrint('Error fetching data: $e');
     }
   }
 
@@ -192,9 +193,9 @@ class _MyHomePageState extends State<MyMap> with TickerProviderStateMixin {
         if (value['Role'] == 'User') {
           double markerLat = double.parse(value['latitude'].toString());
           double markerLong = double.parse(value['longitude'].toString());
-          print(markerLat);
-          print(markerLong);
-          print('above two are the values for the user marker');
+          debugPrint(markerLat.toString());
+          debugPrint(markerLong.toString());
+          debugPrint('above two are the values for the user marker');
           markersuser.add(
             Marker(
               point: LatLng(markerLat, markerLong),
@@ -217,12 +218,12 @@ class _MyHomePageState extends State<MyMap> with TickerProviderStateMixin {
         }
       });
     } catch (e) {
-      print('Error fetching data: $e');
+      debugPrint('Error fetching data: $e');
     }
   }
 
   Future<void> fetchMarkersFromFirebase() async {
-    print('hello World');
+    debugPrint('hello World');
 
     DatabaseReference reference = FirebaseDatabase.instance
         .ref()
@@ -244,7 +245,7 @@ class _MyHomePageState extends State<MyMap> with TickerProviderStateMixin {
             double markerLat = double.parse(binData['latitude'].toString());
             double markerLong = double.parse(binData['longitude'].toString());
             binColor = binData['bincolor'].toString();
-            print(
+            debugPrint(
                 'BinId: $binId, Latitude: $markerLat, Longitude: $markerLong');
             locstring.add(binColor);
             firebaseLocationMarker.add(LatLng(markerLat, markerLong));
@@ -273,11 +274,11 @@ class _MyHomePageState extends State<MyMap> with TickerProviderStateMixin {
         setState(() {});
       } else {
         // Handle the case where snapshot value is null
-        print('Snapshot value is null');
+        debugPrint('Snapshot value is null');
       }
     } catch (e) {
       // Handle exceptions
-      print('Error fetching data1: $e');
+      debugPrint('Error fetching data1: $e');
     }
   }
 
@@ -338,13 +339,13 @@ class _MyHomePageState extends State<MyMap> with TickerProviderStateMixin {
       lat = position.latitude.toString();
       long = position.longitude.toString();
 
-      print("Location: ${position.latitude}, ${position.longitude}");
+      debugPrint("Location: ${position.latitude}, ${position.longitude}");
       setState(() {
         currentlocation = LatLng(position.latitude, position.longitude);
         _radius();
       });
     } catch (e) {
-      print("Error getting location : $e");
+      debugPrint("Error getting location : $e");
     }
   }
 
@@ -352,9 +353,9 @@ class _MyHomePageState extends State<MyMap> with TickerProviderStateMixin {
   List<LatLng> points = [];
 
   Future<void> _radius() async {
-    print('hello');
-    print(currentlocation);
-    print(firebaseLocationMarker);
+    debugPrint('hello');
+    debugPrint(currentlocation.toString());
+    debugPrint(firebaseLocationMarker.toString());
     await Future.delayed(const Duration(seconds: 2));
     for (var i = 0; i < firebaseLocationMarker.length; i++) {
       var p = 0.017453292519943295;
@@ -380,11 +381,11 @@ class _MyHomePageState extends State<MyMap> with TickerProviderStateMixin {
 
     List<List<dynamic>> combined = List.generate(distvalue.length,
         (j) => [distvalue[j], locstring[j], firebaseLocationMarker[j]]);
-    print(combined);
+    debugPrint(combined.toString());
 
     // Sort the combined list by the first element of each triple
     combined.sort((a, b) => a[0].compareTo(b[0]));
-    print(combined);
+    debugPrint(combined.toString());
 
     // Split the combined list back into two lists
     distvalue = combined.map((triple) => triple[0] as double).toList();
@@ -396,18 +397,18 @@ class _MyHomePageState extends State<MyMap> with TickerProviderStateMixin {
       if (locstring[k] == 'red') {
         lati = firebaseLocationMarker[k].latitude.toString();
         longi = firebaseLocationMarker[k].longitude.toString();
-        print('$lati, $longi');
+        debugPrint('$lati, $longi');
         getCoordinates();
-        print('$lati, $longi');
+        debugPrint('$lati, $longi');
 
         if (modeUser == true) {
           //timer
           if (distvalue[k] < 2000) {
-            Timer(Duration(seconds: 5), () {
+            Timer(const Duration(seconds: 5), () {
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
-                  return CountdownAlertDialog();
+                  return const CountdownAlertDialog();
                 },
               );
             });
@@ -424,9 +425,9 @@ class _MyHomePageState extends State<MyMap> with TickerProviderStateMixin {
     User? user = auth.currentUser;
     String? email = user?.email;
     if (user == null) {
-      print('No user found');
+      debugPrint('No user found');
     } else {
-      print(email);
+      debugPrint(email);
     }
     DatabaseReference usersRef = FirebaseDatabase.instance.ref().child('users');
     DatabaseEvent event = await usersRef.once();
@@ -437,14 +438,14 @@ class _MyHomePageState extends State<MyMap> with TickerProviderStateMixin {
       String? userrole = users[key]['Role'];
 
       if (mail == email && userrole == "Admin") {
-        print(mail);
-        print(userrole);
+        debugPrint(mail);
+        debugPrint(userrole);
         modeAdmin = true;
         return true;
       }
       if (mail == email && userrole == "User") {
-        print(mail);
-        print(userrole);
+        debugPrint(mail);
+        debugPrint(userrole);
         modeUser = true;
         return false;
       }
@@ -466,7 +467,7 @@ class _MyHomePageState extends State<MyMap> with TickerProviderStateMixin {
             .map((e) => LatLng(e[1].toDouble(), e[0].toDouble()))
             .toList();
       } else {
-        print('failed : ${request.statusCode}');
+        debugPrint('failed : ${request.statusCode}');
       }
     });
   }
@@ -488,8 +489,7 @@ class _MyHomePageState extends State<MyMap> with TickerProviderStateMixin {
                 FlutterMap(
                   mapController: mapControllers,
                   options: MapOptions(
-                    initialCenter:
-                        currentlocation, //LatLng(37.313769, -121.934961),
+                    initialCenter: currentlocation,
                     initialZoom: 15,
                     maxZoom: 20,
                     minZoom: 5,

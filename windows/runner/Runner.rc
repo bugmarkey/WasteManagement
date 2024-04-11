@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "smart_bin_new" "\0"
+            VALUE "FileDescription", "wastemanagement" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "smart_bin_new" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "smart_bin_new.exe" "\0"
-            VALUE "ProductName", "smart_bin_new" "\0"
+            VALUE "InternalName", "wastemanagement" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
+            VALUE "OriginalFilename", "wastemanagement.exe" "\0"
+            VALUE "ProductName", "wastemanagement" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

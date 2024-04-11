@@ -1,6 +1,6 @@
 {
-    "name": "smart_bin_new",
-    "short_name": "smart_bin_new",
+    "name": "wastemanagement",
+    "short_name": "wastemanagement",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

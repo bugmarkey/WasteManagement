@@ -1,4 +1,3 @@
-//update.dart
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -7,8 +6,7 @@ class EditContact extends StatefulWidget {
   final String binId;
   final String? areaId;
 
-  const EditContact({Key? key, required this.binId, this.areaId})
-      : super(key: key);
+  const EditContact({super.key, required this.binId, this.areaId});
 
   @override
   State<EditContact> createState() => _EditContactState();

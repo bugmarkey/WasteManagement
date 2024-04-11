@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -12,7 +11,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:smart_bin_flutter/screens/login_screen.dart';
 
 class AreaList extends StatefulWidget {
-  const AreaList({Key? key}) : super(key: key);
+  const AreaList({super.key});
 
   @override
   State<AreaList> createState() => _AreaListState();
@@ -55,7 +54,7 @@ class _AreaListState extends State<AreaList> {
   StreamSubscription<User?>? authSubscription;
 
   Future<void> setupUserStatusListener(String userKey) async {
-    print(userKey);
+    debugPrint(userKey);
     DatabaseReference usersRef = FirebaseDatabase.instance.ref().child('users');
 
     // Cancel the previous subscription if it exists
@@ -64,10 +63,10 @@ class _AreaListState extends State<AreaList> {
     // Start a new subscription
     authSubscription = FirebaseAuth.instance.userChanges().listen((User? user) {
       if (user == null) {
-        print('User is currently signed out!');
+        debugPrint('User is currently signed out!');
         usersRef.child(userKey).update({'status': 'offline'});
       } else {
-        print('User is signed in!');
+        debugPrint('User is signed in!');
         usersRef.child(userKey).update({'status': 'online'});
         usersRef.child(userKey).onDisconnect().update({'status': 'offline'});
       }
@@ -81,7 +80,7 @@ class _AreaListState extends State<AreaList> {
     String? userKey;
 
     if (user == null) {
-      print('No user found');
+      debugPrint('No user found');
       return false;
     }
     var a = 1;
@@ -105,13 +104,13 @@ class _AreaListState extends State<AreaList> {
 
         if (userrole == "Admin") {
           userKey = key;
-          print('Admin user : $userKey');
+          debugPrint('Admin user : $userKey');
           a = 1; // store the key of the logged in user
           break;
         }
         if (userrole == "User") {
           userKey = key;
-          print('User user : $userKey');
+          debugPrint('User user : $userKey');
           a = 2;
           break;
         }
@@ -361,13 +360,13 @@ class _AreaListState extends State<AreaList> {
                         }
                       });
 
-                      fullBins.forEach((bin) {
+                      for (var bin in fullBins) {
                         _showNotification(
                           bin['name'],
                           bin['binname'],
                           true,
                         );
-                      });
+                      }
 
                       return Container(
                         margin: const EdgeInsets.symmetric(

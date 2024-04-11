@@ -7,7 +7,7 @@ import 'package:smart_bin_flutter/addon/signup.dart';
 import 'package:smart_bin_flutter/screens/area_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -80,16 +80,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    /*checkLoginStatus().then((loggedIn) {
-      if (loggedIn) {
-        setState(() {
-          isLoggedIn = true;
-        });
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const AreaList()),
-        );
-      }
-    });*/
   }
 
   @override
@@ -208,7 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final guest = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(10),
-      color: Color.fromARGB(255, 2, 220, 93),
+      color: const Color.fromARGB(255, 2, 220, 93),
       child: MaterialButton(
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,

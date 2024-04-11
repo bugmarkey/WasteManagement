@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CLIENT_ID</key>
-	<string>236584419816-fd4s37fumo7h7jbqqba1eh09h3apvgdk.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.236584419816-fd4s37fumo7h7jbqqba1eh09h3apvgdk</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAnCC0jvgrzTQhd45htFgIWy1iOdpYt-oM</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.smartBinNew</string>
+	<string>com.example.wastemanagement</string>
 	<key>PROJECT_ID</key>
 	<string>smartbin-96489</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +25,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:236584419816:ios:ae387b9b1ca1d97d53245d</string>
+	<string>1:236584419816:ios:7d2f92bb19ed6c4253245d</string>
 	<key>DATABASE_URL</key>
 	<string>https://smartbin-96489-default-rtdb.asia-southeast1.firebasedatabase.app</string>
 </dict>

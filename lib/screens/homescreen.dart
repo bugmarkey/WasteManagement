@@ -59,9 +59,9 @@ class _HomePageState extends State<HomePage> {
     User? user = auth.currentUser;
     String? email = user?.email;
     if (user == null) {
-      print('No user found');
+      debugPrint('No user found');
     } else {
-      print(email);
+      debugPrint(email);
     }
     DatabaseReference usersRef = FirebaseDatabase.instance.ref().child('users');
     DatabaseEvent event = await usersRef.once();
@@ -72,8 +72,8 @@ class _HomePageState extends State<HomePage> {
       String? userrole = users[key]['Role'];
 
       if (mail == email && userrole == "Admin") {
-        print(mail);
-        print(userrole);
+        debugPrint(mail);
+        debugPrint(userrole);
         return true;
       }
     }
@@ -81,7 +81,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _buildContactItem({Map? contact, required String bin}) {
-    //str1 = contact?['var1'];
     val1 = double.parse(contact?['bin1']);
     val2 = double.parse(contact?['bin2']);
     val3 = double.parse(contact?['bin3']);
@@ -90,7 +89,7 @@ class _HomePageState extends State<HomePage> {
     double percentage2 = ((val2 - 26) / (height1 - 26)) * 10;
     double percentage3 = ((val3 - 26) / (height1 - 26)) * 10;
     percent1 = 100 - ((percentage1.round()) * 10);
-    print(percent1);
+    debugPrint(percent1.toString());
     percent2 = 100 - ((percentage2.round()) * 10);
     percent3 = 100 - ((percentage3.round()) * 10);
 
@@ -100,8 +99,6 @@ class _HomePageState extends State<HomePage> {
         (percent1 < 90 || percent2 < 90 || percent3 < 90)) {
       percent = 0;
     }
-
-    //val9 = percent1 / 100;
 
     checkColor(var b, var c, var d) {
       if (b >= 80 || c >= 80 || d >= 80) {
