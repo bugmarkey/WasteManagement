@@ -18,9 +18,9 @@ A few resources to get you started if this is your first Flutter project:
     <td style="text-align: center;">HOME SCREEN</td>
   </tr>
   <tr>
-    <td><img src="assets/documentation/login.png" width="20%"></td>
-    <td><img src="assets/documentation/SIGNUP SCREEN.png" width="20%"></td>
-    <td><img src="assets/documentation/HOMESCREEN.png" width="20%"></td>
+    <td><img src="assets/documentation/login.png" width="100%"></td>
+    <td><img src="assets/documentation/SIGNUP SCREEN.png" width="100%"></td>
+    <td><img src="assets/documentation/HOMESCREEN.png" width="100%"></td>
   </tr>
   <tr>
     <td style="text-align: center;">BIN SCREEN</td>
@@ -28,9 +28,9 @@ A few resources to get you started if this is your first Flutter project:
     <td style="text-align: center;">NOTIFICATION</td>
   </tr>
   <tr>
-    <td><img src="assets/documentation/BIN SCREEN.png" width="20%"></td>
-    <td><img src="assets/documentation/MAP SCREEN.png" width="20%"></td>
-    <td><img src="assets/documentation/NOTIFICATION.png" width="20%"></td>
+    <td><img src="assets/documentation/BIN SCREEN.png" width="100%"></td>
+    <td><img src="assets/documentation/MAP SCREEN.png" width="100%"></td>
+    <td><img src="assets/documentation/NOTIFICATION.png" width="100%"></td>
   </tr>
 </table>
 
