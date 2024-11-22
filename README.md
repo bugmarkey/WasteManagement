@@ -11,31 +11,27 @@ A few resources to get you started if this is your first Flutter project:
 
 ## App Pages
 
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <div style="flex: 1; text-align: center;">
-    <p>LOGIN SCREEN</p>
-    <img src="assets/documentation/login.png" style="width: 100%;">
-  </div>
-  <div style="flex: 1; text-align: center;">
-    <p>SIGNUP SCREEN</p>
-    <img src="assets/documentation/SIGNUP SCREEN.png" style="width: 100%;">
-  </div>
-  <div style="flex: 1; text-align: center;">
-    <p>HOME SCREEN</p>
-    <img src="assets/documentation/HOMESCREEN.png" style="width: 100%;">
-  </div>
-  <div style="flex: 1; text-align: center;">
-    <p>BIN SCREEN</p>
-    <img src="assets/documentation/BIN SCREEN.png" style="width: 100%;">
-  </div>
-  <div style="flex: 1; text-align: center;">
-    <p>MAP SCREEN</p>
-    <img src="assets/documentation/MAP SCREEN.png" style="width: 100%;">
-  </div>
-  <div style="flex: 1; text-align: center;">
-    <p>NOTIFICATION</p>
-    <img src="assets/documentation/NOTIFICATION.png" style="width: 100%;">
-  </div>
-</div>
+<table>
+  <tr>
+    <td style="text-align: center;">LOGIN SCREEN</td>
+    <td style="text-align: center;">SIGNUP SCREEN</td>
+    <td style="text-align: center;">HOME SCREEN</td>
+  </tr>
+  <tr>
+    <td><img src="assets/documentation/login.png" width="20%"></td>
+    <td><img src="assets/documentation/SIGNUP SCREEN.png" width="20%"></td>
+    <td><img src="assets/documentation/HOMESCREEN.png" width="20%"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">BIN SCREEN</td>
+    <td style="text-align: center;">MAP SCREEN</td>
+    <td style="text-align: center;">NOTIFICATION</td>
+  </tr>
+  <tr>
+    <td><img src="assets/documentation/BIN SCREEN.png" width="20%"></td>
+    <td><img src="assets/documentation/MAP SCREEN.png" width="20%"></td>
+    <td><img src="assets/documentation/NOTIFICATION.png" width="20%"></td>
+  </tr>
+</table>
 
 
