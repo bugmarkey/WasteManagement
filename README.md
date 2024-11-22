@@ -11,20 +11,31 @@ A few resources to get you started if this is your first Flutter project:
 
 ## App Pages
 
-LOGIN SCREEN
-<div style="text-align: left;"><img src="assets/documentation/login.png" width="20%"></div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+  <div style="flex: 1; text-align: center;">
+    <p>LOGIN SCREEN</p>
+    <img src="assets/documentation/login.png" style="width: 100%;">
+  </div>
+  <div style="flex: 1; text-align: center;">
+    <p>SIGNUP SCREEN</p>
+    <img src="assets/documentation/SIGNUP SCREEN.png" style="width: 100%;">
+  </div>
+  <div style="flex: 1; text-align: center;">
+    <p>HOME SCREEN</p>
+    <img src="assets/documentation/HOMESCREEN.png" style="width: 100%;">
+  </div>
+  <div style="flex: 1; text-align: center;">
+    <p>BIN SCREEN</p>
+    <img src="assets/documentation/BIN SCREEN.png" style="width: 100%;">
+  </div>
+  <div style="flex: 1; text-align: center;">
+    <p>MAP SCREEN</p>
+    <img src="assets/documentation/MAP SCREEN.png" style="width: 100%;">
+  </div>
+  <div style="flex: 1; text-align: center;">
+    <p>NOTIFICATION</p>
+    <img src="assets/documentation/NOTIFICATION.png" style="width: 100%;">
+  </div>
+</div>
 
-SIGNUP SCREEN
-<div style="text-align: left;"><img src="assets/documentation/SIGNUP SCREEN.png" width="20%"></div>
 
-HOME SCREEN
-<div style="text-align: left;"><img src="assets/documentation/HOMESCREEN.png" width="20%"></div>
-
-BIN SCREEN
-<div style="text-align: left;"><img src="assets/documentation/BIN SCREEN.png" width="20%"></div>
-
-MAP SCREEN
-<div style="text-align: left;"><img src="assets/documentation/MAP SCREEN.png" width="20%"></div>
-
-NOTIFICATION
-<div style="text-align: left;"><img src="assets/documentation/NOTIFICATION.png" width="20%"></div>
