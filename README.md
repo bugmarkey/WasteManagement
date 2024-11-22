@@ -20,7 +20,7 @@ A few resources to get you started if this is your first Flutter project:
   <tr>
     <td><img src="assets/documentation/login.png" width="100%"></td>
     <td><img src="assets/documentation/SIGNUP SCREEN.png" width="100%"></td>
-    <td><img src="assets/documentation/HOMESCREEN.png" width="100%"></td>
+    <td><img src="assets/documentation/HOMESCREEN.png" width="90%"></td>
   </tr>
   <tr>
     <td style="text-align: center;">BIN SCREEN</td>
@@ -30,7 +30,7 @@ A few resources to get you started if this is your first Flutter project:
   <tr>
     <td><img src="assets/documentation/BIN SCREEN.png" width="100%"></td>
     <td><img src="assets/documentation/MAP SCREEN.png" width="100%"></td>
-    <td><img src="assets/documentation/NOTIFICATION.png" width="100%"></td>
+    <td><img src="assets/documentation/NOTIFICATION.png" width="90%"></td>
   </tr>
 </table>
 
