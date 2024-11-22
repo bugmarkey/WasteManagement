@@ -2,12 +2,13 @@
 The Waste Management App is a powerful tool for enhancing cleanliness and sustainability in public spaces. Built with Flutter and Firebase, it provides an intuitive way for users to monitor and manage waste disposal effectively. 🗑️✨
 
 ## Key Features 🚀
-📍 Track Waste Bin Locations: Find waste bins around you effortlessly.
-⏰ Real-Time Bin Status Updates: Stay updated on the bin fill level, so you know if it’s available for use.
-🚶 Navigation to Nearby Bins: Get guided routes to the closest bin for easy waste disposal.
-🔐 User Authentication: Secure logins ensure only verified users access the app.
-📌 Dynamic Marker Placement: Mark new bins and update locations in real-time.
-🛣️ Route Visualization: Clear directions make sustainable waste disposal fast and accessible.
+- 📍 Track Waste Bin Locations: Find waste bins around you effortlessly.
+- ⏰ Real-Time Bin Status Updates: Stay updated on the bin fill level, so you know if it’s available for use.
+- 🚶 Navigation to Nearby Bins: Get guided routes to the closest bin for easy waste disposal.
+- 🔐 User Authentication: Secure logins ensure only verified users access the app.
+- 📌 Dynamic Marker Placement: Mark new bins and update locations in real-time.
+- 🛣️ Route Visualization: Clear directions make sustainable waste disposal fast and accessible.
+
 This app encourages sustainable practices within the community by promoting responsible waste management! 🌿
 
 ## Getting Started
